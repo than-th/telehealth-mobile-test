@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <View style={tw`flex-1 items-center bg-white`}>
-      <View style={tw`flex-2 justify-end pb-12`}></View>
+      <View style={tw`flex-2 justify-end pb-12`}/>
       <MotiView
         from={{
           translateY: 0,
@@ -38,7 +38,7 @@ const LoginPage: React.FC = () => {
         animate={{opacity: 1, translateY: 0}}
         transition={{
           type: 'timing',
-          duration: 1500,
+          duration: 1000,
         }}
         style={tw`flex-1 items-center justify-center w-full px-6`}>
         <Text style={[tw`text-lg my-4`, sharedStyle.fontBold]}>
@@ -68,7 +68,7 @@ const LoginPage: React.FC = () => {
         animate={{opacity: 1, translateY: 0}}
         transition={{
           type: 'timing',
-          duration: 1500,
+          duration: 1000,
         }}
         style={tw`flex-2 flex-row gap-2 items-center`}>
         <Text style={tw`text-lg`}>ยังไม่มีบัญชี ?</Text>

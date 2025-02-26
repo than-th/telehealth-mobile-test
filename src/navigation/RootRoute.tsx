@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -27,6 +28,11 @@ const RootRoute = () => {
 
   return (
     <DismissKeyboardWrapper>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle={'dark-content'}
+      />
       <NavigationContainer ref={navigationRef}>
         {isLoading ? (
           <SplashScreen />

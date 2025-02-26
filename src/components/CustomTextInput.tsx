@@ -36,7 +36,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
       </Text>
 
       <MaskedTextInput
-        mask={type === 'idcard' && isFormatted ? '9-99999-9999-99-9' : ''}
+        mask={type === 'idcard' && isFormatted ? '9-9999-99999-99-9' : ''}
         onChangeText={(text, rawText) => {
           if (startsWithNumber(rawText)) {
             setIsFormatted(true);
@@ -50,6 +50,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
         }}
         style={[styles.input, style]}
         placeholder={label}
+        placeholderTextColor={Colors.empty}
         {...props}
       />
 

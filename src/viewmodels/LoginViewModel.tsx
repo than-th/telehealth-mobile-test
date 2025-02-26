@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { User } from '../models/user';
 import { DefaultNavigationProps } from '../navigation/navigation';
+import { API_ENDPOINT } from '../services/ApiEndpoint';
 import { post } from '../services/ApiService';
 import { useStore } from '../stores/useStore';
 
@@ -36,8 +37,8 @@ const useLoginViewModel = () => {
           expiresInMins: 30,
         };
       }
-      console.log(idCard, body);
-      const response = await post('auth/login', body);
+      // console.log(idCard, body);
+      const response = await post(API_ENDPOINT.login, body);
       setUser(response as User);
       navigation.navigate('HomePage');
       console.log('Login successful:', response);

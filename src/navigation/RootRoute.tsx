@@ -1,14 +1,14 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import DismissKeyboardWrapper from '../components/DismissKeyboardWrapper';
 import HomePage from '../screens/HomePage';
 import LoginPage from '../screens/LoginPage';
-import {RootStackParamList} from './navigation';
-import {navigationRef} from './navigationRef';
-import {useEffect, useState} from 'react';
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
+import { RootStackParamList } from './navigation';
+import { navigationRef } from './navigationRef';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,18 +26,20 @@ const RootRoute = () => {
   }, [isLoading]);
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      {isLoading ? (
-        <SplashScreen />
-      ) : (
-        <Stack.Navigator
-          initialRouteName="LoginPage"
-          screenOptions={{headerShown: false}}>
-          <Stack.Screen name="LoginPage" component={LoginPage} />
-          <Stack.Screen name="HomePage" component={HomePage} />
-        </Stack.Navigator>
-      )}
-    </NavigationContainer>
+    <DismissKeyboardWrapper>
+      <NavigationContainer ref={navigationRef}>
+        {isLoading ? (
+          <SplashScreen />
+        ) : (
+          <Stack.Navigator
+            initialRouteName="LoginPage"
+            screenOptions={{headerShown: false}}>
+            <Stack.Screen name="LoginPage" component={LoginPage} />
+            <Stack.Screen name="HomePage" component={HomePage} />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    </DismissKeyboardWrapper>
   );
 };
 

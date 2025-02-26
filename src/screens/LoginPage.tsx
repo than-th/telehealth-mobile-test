@@ -52,7 +52,7 @@ const LoginPage: React.FC = () => {
         <ActivityIndicator
           size="large"
           color={Colors.primary}
-          style={tw`absolute items-center justify-center w-full h-full`}
+          style={tw`absolute items-center justify-center w-full h-full bg-white opacity-50`}
         />
       )}
     </View>

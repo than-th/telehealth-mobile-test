@@ -16,7 +16,7 @@ const useLoginViewModel = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigation = useNavigation<LoginProps['navigation']>();
 
-  const { setUser } = useStore();
+  const {setUser} = useStore();
 
   const isButtonEnabled = idCard.trim().length > 0;
 
@@ -37,14 +37,13 @@ const useLoginViewModel = () => {
           expiresInMins: 30,
         };
       }
-      // console.log(idCard, body);
       const response = await post(API_ENDPOINT.login, body);
       setUser(response as User);
       navigation.navigate('HomePage');
       console.log('Login successful:', response);
     } catch (error) {
       console.log(error);
-      setErrorMessage('Login failed. Please try again.');
+      setErrorMessage('ไม่สามารถเข้าสู่ระบบได้ กรุณาลองใหม่อีกครั้ง');
     } finally {
       setIsLoading(false);
     }

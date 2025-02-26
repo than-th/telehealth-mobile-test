@@ -1,3 +1,4 @@
+import { MotiView } from 'moti';
 import React from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import tw from 'twrnc';
@@ -16,14 +17,34 @@ const LoginPage: React.FC = () => {
 
   return (
     <View style={tw`flex-1 items-center bg-white`}>
-      <View style={tw`flex-2 justify-end pb-12`}>
+      <View style={tw`flex-2 justify-end pb-12`}></View>
+      <MotiView
+        from={{
+          translateY: 0,
+        }}
+        animate={{
+          translateY: -200,
+        }}
+        transition={{
+          type: 'timing',
+          duration: 1000,
+        }}
+        style={tw`absolute items-center justify-center w-full h-full`}>
         <TelehealthLogo />
-      </View>
+      </MotiView>
 
-      <View style={tw`flex-1 items-center justify-center w-full px-6`}>
+      <MotiView
+        from={{opacity: 0, translateY: 20}}
+        animate={{opacity: 1, translateY: 0}}
+        transition={{
+          type: 'timing',
+          duration: 1500,
+        }}
+        style={tw`flex-1 items-center justify-center w-full px-6`}>
         <Text style={[tw`text-lg my-4`, sharedStyle.fontBold]}>
           เข้าสู่ระบบเพื่อใช้งาน
         </Text>
+
         <CustomTextInput
           label={'เลขบัตรประจำตัวประชาชน/เลขหนังสือเดินทาง'}
           type="idcard"
@@ -40,14 +61,21 @@ const LoginPage: React.FC = () => {
         ) : (
           <Text />
         )}
-      </View>
+      </MotiView>
 
-      <View style={tw`flex-2 flex-row gap-2 items-center`}>
+      <MotiView
+        from={{opacity: 0, translateY: 20}}
+        animate={{opacity: 1, translateY: 0}}
+        transition={{
+          type: 'timing',
+          duration: 1500,
+        }}
+        style={tw`flex-2 flex-row gap-2 items-center`}>
         <Text style={tw`text-lg`}>ยังไม่มีบัญชี ?</Text>
         <TouchableOpacity onPress={() => {}}>
           <Text style={tw`text-lg text-[${Colors.primary}]`}>ลงทะเบียน</Text>
         </TouchableOpacity>
-      </View>
+      </MotiView>
       {isLoading && (
         <ActivityIndicator
           size="large"

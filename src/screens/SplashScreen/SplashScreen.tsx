@@ -1,7 +1,8 @@
 import React from 'react';
-import {StatusBar, View} from 'react-native';
-import TelehealthLogo from '../../assets/svg/TelehealthLogo';
+import { StatusBar, View } from 'react-native';
 import tw from 'twrnc';
+
+import TelehealthLogo from '../../assets/svg/TelehealthLogo';
 
 export default function SplashScreen() {
   return (

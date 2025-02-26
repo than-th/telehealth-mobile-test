@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import tw from 'twrnc';
 
 import TelehealthLogo from '../assets/svg/TelehealthLogo';
@@ -8,8 +8,12 @@ import { Text } from '../components/CustomText';
 import CustomTextInput from '../components/CustomTextInput';
 import { Colors } from '../shared/style/Colors';
 import { sharedStyle } from '../shared/style/SharedStyle';
+import useLoginViewModel from '../viewmodels/LoginViewModel';
 
 const LoginPage: React.FC = () => {
+  const {setIdCard, isLoading, isButtonEnabled, errorMessage, handleLogin} =
+    useLoginViewModel();
+
   return (
     <View style={tw`flex-1 items-center bg-white`}>
       <View style={tw`flex-2 justify-end pb-12`}>
@@ -23,13 +27,19 @@ const LoginPage: React.FC = () => {
         <CustomTextInput
           label={'เลขบัตรประจำตัวประชาชน/เลขหนังสือเดินทาง'}
           type="idcard"
-          onRawTextChange={()=>{}}
+          onRawTextChange={setIdCard}
           required
         />
         <CustomButton
           title={'เข้าสู่ระบบ'}
-          onPress={()=>{}}
+          onPress={handleLogin}
+          disabled={!isButtonEnabled || isLoading}
         />
+        {errorMessage ? (
+          <Text style={tw`text-red-500`}>{errorMessage}</Text>
+        ) : (
+          <Text />
+        )}
       </View>
 
       <View style={tw`flex-2 flex-row gap-2 items-center`}>
@@ -38,6 +48,13 @@ const LoginPage: React.FC = () => {
           <Text style={tw`text-lg text-[${Colors.primary}]`}>ลงทะเบียน</Text>
         </TouchableOpacity>
       </View>
+      {isLoading && (
+        <ActivityIndicator
+          size="large"
+          color={Colors.primary}
+          style={tw`absolute items-center justify-center w-full h-full`}
+        />
+      )}
     </View>
   );
 };

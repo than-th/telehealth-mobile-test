@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import DismissKeyboardWrapper from '../components/DismissKeyboardWrapper';
+import DoctorListPage from '../screens/DoctorListPage';
 import HomePage from '../screens/HomePage';
 import LoginPage from '../screens/LoginPage';
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
@@ -42,6 +43,7 @@ const RootRoute = () => {
             screenOptions={{headerShown: false}}>
             <Stack.Screen name="LoginPage" component={LoginPage} />
             <Stack.Screen name="HomePage" component={HomePage} />
+            <Stack.Screen name="DoctorListPage" component={DoctorListPage} />
           </Stack.Navigator>
         )}
       </NavigationContainer>
